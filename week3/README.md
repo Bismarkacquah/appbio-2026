@@ -25,6 +25,51 @@ and their coding sequences. I therefore consider this build **complete for a
 reference genome**, while noting that it is a single reference isolate and
 does not represent the sequence variation found across TMV populations.
 
+## Code used to generate this assessment
+
+The download workflow is encoded in the `Makefile` and is reproducible with the
+following commands:
+
+```make
+SHELL := /bin/sh
+
+ACCESSION := NC_001367.1
+
+FASTA_URL := https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=$(ACCESSION)&rettype=fasta&retmode=text
+GFF_URL := https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=$(ACCESSION)&rettype=gff3&retmode=text
+
+FASTA_DIR := fasta
+GFF_DIR := gff
+
+FASTA := $(FASTA_DIR)/$(ACCESSION).fasta
+GFF := $(GFF_DIR)/$(ACCESSION).gff3
+
+all: genome
+
+genome: $(FASTA) $(GFF)
+
+$(FASTA_DIR):
+	mkdir -p $@
+
+$(GFF_DIR):
+	mkdir -p $@
+
+$(FASTA): | $(FASTA_DIR)
+	curl --fail --location --retry 3 --output $@ '$(FASTA_URL)'
+
+$(GFF): | $(GFF_DIR)
+	curl --fail --location --retry 3 --output $@ '$(GFF_URL)'
+```
+
+The annotation count was verified directly from the downloaded GFF3 file with:
+
+```sh
+awk '!/^#/ && NF { n++ } END { print n }' gff/NC_001367.1.gff3
+```
+
+This returns `13`, which matches the expected total of one region feature, six
+gene features, and six CDS features once comment and directive lines are
+excluded.
 
 ## Reproduce the download
 

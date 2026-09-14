@@ -5,9 +5,16 @@ Hello World
 
 I chose Visual Studio Code as my AI-ready code editor.
 
+### Code used
+
+```bash
+which code
+code --version
+```
+
 ## Samtools Version
 
-### Command
+### Code used
 
 ```bash
 samtools --version
@@ -25,7 +32,7 @@ The version of `samtools` in my `bioinfo` environment is **1.24**.
 
 ## Creating Nested Directories
 
-### Command
+### Code used
 
 ```bash
 mkdir -p data/raw/sequences
@@ -42,7 +49,8 @@ data/raw/sequences
 
 ## Creating Files in Different Directories
 
-### Command
+### Code used
+
 ```bash
 touch data/notes.txt
 touch data/raw/samples.txt
@@ -64,7 +72,7 @@ data/raw/samples.txt
 
 A relative path specifies the location of a file relative to the current working directory.
 
-#### Command
+#### Code used
 
 ```bash
 cat data/notes.txt
@@ -80,7 +88,7 @@ Week 01 notes
 
 An absolute path specifies the complete location of a file starting from the root directory.
 
-#### Command
+#### Code used
 
 ```bash
 cat /home/susel/appbio-2026/week01/data/notes.txt
