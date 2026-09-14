@@ -19,16 +19,16 @@ are excluded: one region feature, six gene features, and six CDS features.
 
 ## Completeness assessment
 
-The NCBI record describes this as a complete genome, and the FASTA contains
-the full 6,395-nt reference sequence. The GFF3 annotates all six listed genes
-and their coding sequences. I therefore consider this build **complete for a
-reference genome**, while noting that it is a single reference isolate and
-does not represent the sequence variation found across TMV populations.
+The NCBI record describes this as a complete genome, and the FASTA contains the
+full 6,395-nt reference sequence. The GFF3 annotates all six listed genes and
+their coding sequences. I therefore consider this build to be **complete for a
+reference genome**, while noting that it represents a single reference isolate
+rather than the full range of TMV sequence diversity observed in nature.
 
-## Code used to generate this assessment
+## Reproducible workflow and evidence
 
-The download workflow is encoded in the `Makefile` and is reproducible with the
-following commands:
+The download workflow is encoded in the `Makefile` and can be reproduced as
+follows:
 
 ```make
 SHELL := /bin/sh
@@ -43,6 +43,8 @@ GFF_DIR := gff
 
 FASTA := $(FASTA_DIR)/$(ACCESSION).fasta
 GFF := $(GFF_DIR)/$(ACCESSION).gff3
+
+.PHONY: all genome clean
 
 all: genome
 
@@ -67,7 +69,7 @@ The annotation count was verified directly from the downloaded GFF3 file with:
 awk '!/^#/ && NF { n++ } END { print n }' gff/NC_001367.1.gff3
 ```
 
-This returns `13`, which matches the expected total of one region feature, six
+This produced `13`, which matches the expected total of one region feature, six
 gene features, and six CDS features once comment and directive lines are
 excluded.
 

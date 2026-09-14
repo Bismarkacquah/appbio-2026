@@ -1,20 +1,20 @@
 Hello World
 # Week 01 Assignment
 
-## AI-Ready Code Editor
+## AI-ready code editor
 
-I chose Visual Studio Code as my AI-ready code editor.
+I selected Visual Studio Code as my AI-ready editor for bioinformatics work.
 
-### Code used
+### Command used
 
 ```bash
 which code
 code --version
 ```
 
-## Samtools Version
+## Samtools version
 
-### Code used
+### Command used
 
 ```bash
 samtools --version
@@ -28,11 +28,11 @@ Using htslib 1.24
 Copyright (C) 2026 Genome Research Ltd.
 ```
 
-The version of `samtools` in my `bioinfo` environment is **1.24**.
+The version of `samtools` in the course `bioinfo` environment is **1.24**.
 
-## Creating Nested Directories
+## Creating nested directories
 
-### Code used
+### Command used
 
 ```bash
 mkdir -p data/raw/sequences
@@ -47,9 +47,9 @@ data/raw
 data/raw/sequences
 ```
 
-## Creating Files in Different Directories
+## Creating files in different directories
 
-### Code used
+### Command used
 
 ```bash
 touch data/notes.txt
@@ -66,13 +66,13 @@ data/raw/sequences/example.fasta
 data/raw/samples.txt
 ```
 
-## Relative and Absolute Paths
+## Relative and absolute paths
 
-### Relative Path
+### Relative path
 
-A relative path specifies the location of a file relative to the current working directory.
+A relative path specifies a file location relative to the current working directory.
 
-#### Code used
+#### Command used
 
 ```bash
 cat data/notes.txt
@@ -84,11 +84,11 @@ cat data/notes.txt
 Week 01 notes
 ```
 
-### Absolute Path
+### Absolute path
 
-An absolute path specifies the complete location of a file starting from the root directory.
+An absolute path specifies the full file location starting from the filesystem root.
 
-#### Code used
+#### Command used
 
 ```bash
 cat /home/susel/appbio-2026/week01/data/notes.txt
